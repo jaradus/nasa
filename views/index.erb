@@ -1,0 +1,28 @@
+<h1>Service Records</h1>
+<img class="logo" src="http://upload.wikimedia.org/wikipedia/commons/2/25/Nasa-logo.gif">
+<% @astronauts.each do |astronaut| %>
+  <div class="record">
+  <h2><%= "#{astronaut.first_name} #{astronaut.last_name}," %></h2><h3><%= "#{astronaut.rank}" %></h3>
+  <img class="headshot" src="<%= astronaut.image_url %>">
+  <div>
+    <ul>
+      <li>Date of Birth: <%= astronaut.date_of_birth %></li>
+      <li>Background: <%= astronaut.specialty %></li>
+    </ul>
+  </div>
+  <table>
+    <thead>
+      <td>Launch ID</td>
+      <td>Planets</td>
+      <td>Moons</td>
+    </thead>
+    <% astronaut.voyages.each do |voyage| %>
+    <tr>
+      <td><%= voyage.id %></td>
+      <td><%= voyage.planet.name %></td>
+      <td><%= voyage.moon.name %></td>
+    </tr>
+    <% end %>
+  </table>
+    </div>
+  <% end %>
